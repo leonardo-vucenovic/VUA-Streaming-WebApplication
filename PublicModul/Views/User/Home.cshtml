@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MVC_PublicModule</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MVC_PublicModule.styles.css" asp-append-version="true" />
+
+    <style>
+        .btn-login {
+            background-color: gray;
+        }
+
+        .btn-register {
+            background-color: red;
+        }
+
+        body {
+            margin-bottom: 60px;
+            background-image: url(/images/Back.jpg);
+        }
+
+        .centered-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            color: white;
+            font-size: 50px;
+        }
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-container">
+        <div class="container">
+            <main role="main" class="pb-3">
+                <h1>Welcome to livestream application</h1>
+                <div>
+                    <a class="btn btn-primary btn-login" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+                    <a class="btn btn-secondary btn-register" asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
+
+

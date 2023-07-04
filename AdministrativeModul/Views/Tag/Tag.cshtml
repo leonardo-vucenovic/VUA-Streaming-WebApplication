@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AdministrativeModul.ViewModels.VMTag>
+
+@{
+    ViewData["Title"] = "Tag";
+}
+
+<h1>Tag</h1>
+
+<p><a asp-action="Create" class="btn btn-primary">Create New</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                    <button class="btn btn-success mr-2" onclick="location.href='@Url.Action("Edit", new {id=item.Id})'">Edit</button>
+                    <button class="btn btn-primary mr-2" onclick="location.href='@Url.Action("Details", new {id=item.Id})'">Details</button>
+                    <button class="btn btn-danger " onclick="location.href='@Url.Action("Delete",  new {id=item.Id})'">Delete</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

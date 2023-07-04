@@ -1,0 +1,29 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-image: url(/images/Back.jpg);
+}
+table.table tbody td, tr, th, label, input, h1, h2, h3,h4,h5,h6 {
+    color: white;
+    font-size: 25px;
+}
+
+label, dd, dt{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}

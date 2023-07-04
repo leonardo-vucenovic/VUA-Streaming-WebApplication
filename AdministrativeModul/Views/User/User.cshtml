@@ -1,0 +1,146 @@
+﻿@model IEnumerable<AdministrativeModul.ViewModels.VMUser>
+@{
+    ViewData["Title"] = "User";
+    var countryList = (SelectList)ViewBag.Country;
+}
+
+<h1>User</h1>
+
+<p>
+    <button class="btn btn-primary btn-create" onclick="location.href='@Url.Action("Create")'">Create New</button>
+</p>
+
+<div class="row">
+    <div class="col-md-3">
+        <label for="firstName">First Name:</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" />
+    </div>
+    <div class="col-md-3">
+        <label for="lastName">Last Name:</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" />
+    </div>
+    <div class="col-md-3">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username" name="username" />
+    </div>
+    <div class="col-md-3">
+        <label for="country">Country:</label>
+        <input type="text" class="form-control" id="country" name="country" />
+    </div>
+    <div class="col-md-12 text-center">
+        <button class="btn btn-secondary" onclick="applyFilters()">Apply Filters</button>
+        <button class="btn btn-secondary" onclick="resetFilters()">Reset Filters</button>
+    </div>
+</div>
+
+<script>
+    function applyFilters() {
+        var firstName = $('#firstName').val();
+        var lastName = $('#lastName').val();
+        var username = $('#username').val();
+        var countryId = $('#countryId').val();
+
+    document.cookie = "firstName=" + encodeURIComponent(firstName);
+    document.cookie = "lastName=" + encodeURIComponent(lastName);
+    document.cookie = "username=" + encodeURIComponent(username);
+    document.cookie = "countryId=" + encodeURIComponent(countryId);
+
+        var url = '@Url.Action("User")' + '?firstName=' + firstName + '&lastName=' + lastName + '&username=' + username + '&countryId=' + countryId;
+    location.href = url;
+    }
+
+    function resetFilters() {
+        $('#firstName').val('');
+        $('#lastName').val('');
+        $('#username').val('');
+        $('#countryId').val(0);
+        applyFilters();
+    }
+</script>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeletedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsConfirmed)
+            </th>
+
+            <th>
+                Country
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeletedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsConfirmed)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CountryOfResidence.Name)
+                </td>
+                <td style="white-space: nowrap">
+
+                    <button class="btn btn-success mr-2" onclick="location.href='@Url.Action("Edit", new {id=item.Id})'">Edit</button>
+                    <button class="btn btn-primary mr-2" onclick="location.href='@Url.Action("Details", new {id=item.Id})'">Details</button>
+                    <button class="btn btn-danger mr-2" onclick="location.href='@Url.Action("Delete",  new {id=item.Id})'">Delete</button>
+
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

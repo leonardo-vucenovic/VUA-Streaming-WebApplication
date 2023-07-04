@@ -1,0 +1,124 @@
+﻿@model PublicModul.ViewModels.VMLogin
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f1f1f1;
+        overflow: hidden;
+    }
+
+    .login-form {
+        max-width: 500px;
+        padding: 40px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .login-form h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .login-form h4 {
+            color: #777;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+            .login-form .form-group label {
+                display: block;
+                font-weight: bold;
+                color: #333;
+            }
+
+        .login-form .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .login-form .btn-primary {
+            width: 100%;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+            .login-form .btn-primary:hover,
+            .login-form .btn-primary:focus {
+                background-color: #286090;
+                border-color: #204d74;
+            }
+
+        .login-form .btn-secondary {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            background-color: #ccc;
+            border-color: #bbb;
+            color: #333;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+            .login-form .btn-secondary:hover,
+            .login-form .btn-secondary:focus {
+                background-color: #bbb;
+                border-color: #aaa;
+                color: #333;
+            }
+</style>
+
+<div class="centered-container">
+    <div class="login-form">
+        <h1>Login</h1>
+
+        <h4>Login</h4>
+        <hr />
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="StaySignedIn" /> @Html.DisplayNameFor(model => model.StaySignedIn)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+        <a href="@Url.Action("Home")" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

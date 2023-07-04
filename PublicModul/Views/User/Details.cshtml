@@ -1,0 +1,146 @@
+﻿@model PublicModul.ViewModels.VMUser
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    .account-details {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .account-details h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .account-details hr {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 0;
+            border-top: 1px solid #ddd;
+        }
+
+        .account-details dl.row {
+            margin-bottom: 20px;
+        }
+
+        .account-details dt.col-sm-2 {
+            font-weight: bold;
+        }
+
+        .account-details dd.col-sm-10 {
+            margin-left: 0;
+            font-size: 16px;
+        }
+
+        .account-details .btn-primary {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+            .account-details .btn-primary:hover,
+            .account-details .btn-primary:focus {
+                background-color: #286090;
+                border-color: #204d74;
+            }
+
+        .account-details .btn-secondary {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            background-color: #ccc;
+            border-color: #bbb;
+            color: #333;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+            .account-details .btn-secondary:hover,
+            .account-details .btn-secondary:focus {
+                background-color: #bbb;
+                border-color: #aaa;
+                color: #333;
+            }
+</style>
+
+<div class="account-details">
+    <h1>Account</h1>
+    <div class="row justify-content-center">
+        <div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Id)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Id)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CreatedAt)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CreatedAt)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Username)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Username)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IsConfirmed)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.IsConfirmed)
+                </dd>
+                <dt class="col-sm-2">
+                    Country
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.CountryName
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a class="btn btn-primary" asp-area="" asp-controller="User" asp-action="ChangePassword">Change password</a>
+            <a class="btn btn-secondary" asp-area="" asp-controller="Video" asp-action="Video">Back</a>
+        </div>
+    </div>
+</div>
+

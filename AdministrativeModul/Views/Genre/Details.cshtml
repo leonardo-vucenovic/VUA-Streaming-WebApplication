@@ -1,0 +1,36 @@
+﻿@model AdministrativeModul.ViewModels.VMGenre
+
+@{
+    ViewData["Title"] = "Details genre";
+}
+
+<h1>Details genre</h1>
+
+<div>
+    <h4>Genre</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <button class="btn btn-primary" onclick="location.href='@Url.Action("Edit", new { id = Model.Id })'">Edit</button>
+    <a href="@Url.Action("Genre")" class="btn btn-secondary">Back to List</a>
+</div>

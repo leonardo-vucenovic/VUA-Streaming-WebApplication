@@ -1,0 +1,83 @@
+﻿@model IEnumerable<PublicModul.ViewModels.VMVideo>
+
+@{
+    ViewData["Title"] = "Video";
+    var page = (int)ViewData["page"];
+    var size = (int)ViewData["size"];
+    var orderBy = (string)ViewData["orderBy"];
+    var direction = (string)ViewData["direction"];
+    var pages = (int)ViewData["totalPages"];
+
+}
+
+<h1>Video</h1>
+
+<section>
+    <header>
+        <h2 class="text-white">Videos</h2>
+    </header>
+
+    <form id="search-form" method="get">
+        <div class="form-row">
+            <div class="col">
+                @{
+                    string videoName = (string)ViewData["VideoName"] ?? ViewContext.HttpContext.Request.Cookies["VideoName"];
+                }
+                <input type="text" class="form-control" name="videoName" placeholder="Video Name" value="@videoName">
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary btn-create">Search</button>
+            </div>
+        </div>
+    </form>
+
+
+    <div id="video-container" class="container">
+        @await Html.PartialAsync("VideoTableBodyPartial", Model)
+
+    </div>
+
+
+
+    <div class="btn-group">
+        @for (var i = 0; i < pages; i++)
+        {
+            var currClass = page == i ? "btn-primary" : "btn-outline-primary";
+            <a asp-action="Video"
+           asp-route-page="@i"
+           asp-route-size="@size"
+           asp-route-orderBy="@orderBy"
+           asp-route-direction="@direction"
+               data-page="@i"
+               class="pager-btn btn @currClass">@(i + 1)</a>
+        }
+    </div>
+
+</section>
+
+@section Scripts {
+
+    <script>
+        $("#search-form").submit(function (event) {
+            console.log("Search form submitted");
+            event.preventDefault();
+
+            var videoName = $("input[name='videoName']").val();
+
+            $.ajax({
+                type: "GET",
+                url: "/Video/FilterVideos",
+                data: { videoName: videoName },
+                success: function (data) {
+                    $("#video-container").html(data);
+
+                    $(".pager-btn").removeClass("btn-primary");
+                    $(".pager-btn").addClass("btn-outline-primary");
+                },
+                error: function (data) {
+                    console.error("Ajax GET error", data);
+                }
+            });
+        });
+    </script>
+}
