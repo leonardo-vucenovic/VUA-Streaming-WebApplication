@@ -1,5 +1,1 @@
-![1](https://github.com/leonardo-vucenovic/VUA-Streaming-WebApplication/assets/101517924/7ca0b4fd-66de-42d5-ba33-459135f570f2)
-![2](https://github.com/leonardo-vucenovic/VUA-Streaming-WebApplication/assets/101517924/c7e77589-b04f-4771-82df-07d3dd23b3fe)
-![3](https://github.com/leonardo-vucenovic/VUA-Streaming-WebApplication/assets/101517924/a44cb0b2-57c2-46d7-889d-03d12b0717c6)
-![4](https://github.com/leonardo-vucenovic/VUA-Streaming-WebApplication/assets/101517924/a66c2644-235a-4d0d-8803-71f0b92044bc)
-![5](https://github.com/leonardo-vucenovic/VUA-Streaming-WebApplication/assets/101517924/b3a81fa7-7f42-4fa8-91e8-f608cd6d5c94)
+
